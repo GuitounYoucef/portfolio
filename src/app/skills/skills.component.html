@@ -1,0 +1,54 @@
+
+<video id="myVideo" src="assets/videos/Typing_dark_03_Videvo.mov" style="margin: 0;  display: flex; z-index: -10; position: fixed;
+left: 0; top: 0px; display: flex;    " muted loop autoplay></video>    
+<div class="skil">
+
+
+<div class="row" (window:resize)="onResize($event)"  (mousedown)="staticiamge() "
+    (mouseup)="fixedimage()" [@listAnimation]="skills.length" >
+
+    <div class="col-lg-6 col-sm-12 col-md-12">
+
+    
+
+
+<!--         <img src="assets/images/projects.jpg" [style.position]="image1position" class="img-fluid image1" alt="" style="height: 100vh;
+              left: 0; top: 0px;   filter: grayscale(0%);   "> -->
+
+    </div>
+
+    <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 120px; height: auto;">
+        <div class="container" >
+            <div fxLayout="row wrap" fxLayoutGap="20px grid" >
+                <div  fxFlex="45%"  fxFlex.xs="90%" fxFlex.sm="90%"  *ngFor="let skill of skills; let i = index">
+                    <mat-accordion >
+                        <!-- #docregion basic-panel -->
+                        <!-- #docregion hide-toggle -->
+                        
+                        <!-- #enddocregion basic-panel -->
+                          <mat-expansion-panel 
+                           style="background-color: azure; padding: 5px; font-size: 14px;" 
+                           (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                {{skill.technologieName}}
+                              </mat-panel-title>
+
+                            </mat-expansion-panel-header>
+                            <p>I'm visible because I am open</p>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>    
