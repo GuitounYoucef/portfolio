@@ -14,6 +14,9 @@
     min-height: 100%;
   }
 
+  .disable_ripple:hover{
+    background-color: aqua;
+    }
 
   @media only screen and (max-width: 992px) {
     .image1 {
