@@ -1,0 +1,192 @@
+.checked {
+    color: orange;
+  }
+  .image1 {
+    position: static;
+    width: 100vh;
+  }
+
+  .skills{
+   padding: 5%;
+  }
+
+  @media only screen and (max-width: 992px) {
+    .image1 {
+      position: static;
+      width: 100%;
+    }
+  }  
+
+  .collapse-active {
+
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .collapse-active:after {
+    content: '\002B';
+    font-size: 25px;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    right: 15px;
+    font-weight: bold;
+    width: 35px;
+    float: right;
+  }
+
+  
+  .collapse-nonactve {
+
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .collapse-nonactve:after {
+    content: '\2212';
+    font-size: 25px;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    right: 15px;
+    font-weight: bold;
+    width: 35px;
+    float: right;
+  }
+
+  .collapsible:active{
+    content: "\2212";
+  }
+
+  .selected {
+    background-color: greenyellow!important;
+    
+  }
+  
+  .video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+
+
+/* ****************************************************** */
+
+.wrapper {
+  position: relative;
+  perspective: 40em;
+  display: grid;
+  transform-style: preserve-3d;
+}
+
+.card1 {
+  grid-area: 1 / 1;
+  height: 200px;
+  width: 400px;
+  transform: translateX(10px) rotateY(25deg) rotateX(10deg);
+  background: rgba(241, 36, 9, 0.88);
+  
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  color: white;
+
+  font-size: 20px;
+  font-weight: 900;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
+}
+
+.card2 {
+  grid-area: 1 / 1;
+  height: 200px;
+  width: 400px;
+  transform: translateX(10px) rotateY(25deg) rotateX(10deg);
+  background: rgba(29, 136, 185, 0.88);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  color:white;
+  text-transform: uppercase;
+  font-size: 60px;
+  font-weight: 900;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.card .enclosed {
+  background: #000;
+  line-height: 1;
+  color: rgba(249, 198, 26, 1);
+  padding: 0 5px;
+  display: inline-block;
+  transform: translate(-1px, 1px) scale(0.75);
+  transform-origin: right center;
+}
+
+.wrapper:before {
+  --bw: 9px;
+  grid-area: 1 / 1;
+  content: '';
+  backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  margin-top: calc(-1 * var(--bw));
+  margin-left: calc(-1 * var(--bw));
+  background: transparent;
+  transform: translateX(-60px) rotateY(-30deg) rotateX(15deg) scale(1.03);
+  pointer-events: none;
+  border: var(--bw) solid rgb(255, 255, 255);
+  box-sizing: content-box;
+}
+
+
+.wrapper:hover > div,
+.wrapper:hover:before {
+  transform: none;
+}
+
+
+.wrapper > div,
+.wrapper:before {
+  will-change: transform;
+  transition: .3s transform cubic-bezier(.25,.46,.45,1);
+}
+
+
+
+
+
+.bod {
+  height: 100vh;
+
+  display: grid;
+  place-items: center;
+  background:rgba(0,0,0,.5)
+    
+}  

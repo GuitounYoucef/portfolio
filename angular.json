@@ -5,7 +5,11 @@
   "projects": {
     "portfolio": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": { 
+        "@schematics/angular:component": {
+          "style": "scss"
+          }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -36,7 +40,7 @@
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/animate.css/animate.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",

@@ -1,16 +1,20 @@
-<div class="row"  (window:resize)="onResize($event)" style="position: relative;"   [@listAnimation]="skills.length">
+ <video id="myVideo" src="assets/videos/projects2.mp4" style="margin: 0;  display: flex; z-index: -10; position: fixed;
+left: 0; top: 0px; display: flex;    " muted loop autoplay></video>
+<div class="skil"> 
+<div class="row"  (window:resize)="onResize($event)" style="position: relative; "   [@listAnimation]="skills.length">
     
     <div class="col-lg-6 col-sm-12 col-md-12" >
 
-        <img src="assets/images/projects.jpg" [style.position]="image1position" class="img-fluid image1" alt="" style="height: 100vh;
-              left: 0; top: 0px;   filter: grayscale(0%);   ">
+
 
     </div>    
 
-    <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 0px; background-color: rgb(0, 11, 17);">
-        <div class="container">
-            <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let skill of skills; let i = index">
+
+    <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 0px; height: 100vh; position: relative; ">
+      <div class="container" style="top: 0px; padding-top: 120px; padding-bottom: 40px; position: absolute;  height: auto; background-color:rgba(0,0,0,.5);">
+        <div class="container" >  
+            <div fxLayout="row wrap" fxLayoutGap="20px grid" >
+        <div fxFlex="40%" fxFlex.xs="90%" fxFlex.sm="90%" *ngFor="let skill of skills; let i = index">
                
 <!--Card-->
 <mdb-card dark="true">
@@ -64,7 +68,7 @@
     <!--/.Card content-->
   </mdb-card>
   <!--/.Card-->
-
+</div>  
         </div>
     </div>
 

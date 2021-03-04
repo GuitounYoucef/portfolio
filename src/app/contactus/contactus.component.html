@@ -1,55 +1,50 @@
-<div class="row" (window:resize)="onResize($event)" style="position: relative;">
-    <!-- [@listAnimation]="skills.length"  -->
+<video id="myVideo" src="assets/videos/contact us.mp4" style="margin: 0;  display: flex; z-index: -10; position: fixed;
+left: 0; top: 0px; display: flex;    " muted loop autoplay></video>
+<div class="skil">
 
-    <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 70px;">
 
-        <div *ngFor="let skill of skills; let i = index">
+    <div class="row" [@listAnimation]="skills.length" style="margin: 0;">
 
-            <!-- Card -->
-            <mdb-card cascade="true" wider="true">
+        <div class="col-lg-6 col-sm-12 col-md-12">
 
-                <button [ngClass]="statusCollapse" [class.selected]="skill.selected"
-                    (click)="skill.selected= !skill.selected" (click)="test.toggle()" mdbWavesEffect>
 
+
+
+            <!--         <img src="assets/images/projects.jpg" [style.position]="image1position" class="img-fluid image1" alt="" style="height: 100vh;
+              left: 0; top: 0px;   filter: grayscale(0%);   "> -->
+
+        </div>
+
+
+
+
+        <div class="container bod col-lg-6 col-sm-12 col-md-12" style="top: 0px;   " [@listAnimation]="x">
+
+            <div class="wrapper">
+                <div class="card1">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img class="img-fluid" style="width: 80px; height: 80px; margin:10%;"
-                                [src]="skill.imageLink">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="card-body">
-                                <h5 class="card-title">{{skill.technologieName}}</h5>
-
-                                <div class="row">
-                                    <div style="margin: 3px;">
-                                        <span *ngFor="let i of [].constructor(skill.level)"
-                                            class="fa fa-star checked"></span>
-                                    </div>
-                                    <h4>{{skill.level}}/10</h4>
-                                </div>
-                            </div>
-                        </div>
+                        <h1>
+                            <span class="enclosed">G</span>mail
+                        </h1>
                     </div>
-                </button>
-            </mdb-card>
+                    <div class="row">
+                        <p style="color: black;">guitxyoucef@gmail.com</p>
+                    </div>
+                </div>
 
-
-
-            <div mdbCollapse [isCollapsed]="true" #test="bs-collapse" style="margin: 10px;">
-                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                    anim keffiyeh helvetica,
-                    craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
             </div>
+
+            <div class="wrapper">
+                <div class="card2">
+                    <h1>
+                        <span class="enclosed">Link</span>in
+                    </h1>
+                </div>
+            </div>
+
+
 
         </div>
 
 
     </div>
-
-    <div class="col-lg-6 col-sm-12 col-md-12"> 
-
-        <img src="assets/images/contactus.jpg" [style.position]="image1position" class="img-fluid image1" alt="" style="height: 100vh; z-index: 1;
-              left: 50%; top: 0px;   filter: grayscale(0%);   ">
-
-    </div>
-</div>
