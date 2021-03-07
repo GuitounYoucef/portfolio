@@ -1,78 +1,91 @@
- <video id="myVideo" src="assets/videos/projects2.mp4" style="margin: 0;  display: flex; z-index: -10; position: fixed;
+<video id="myVideo" src="assets/videos/projects3.mp4" style="margin: 0;  display: flex; z-index: -10; position: fixed;
 left: 0; top: 0px; display: flex;    " muted loop autoplay></video>
-<div class="skil"> 
-<div class="row"  (window:resize)="onResize($event)" style="position: relative; "   [@listAnimation]="skills.length">
+
+
+
+<div class="row" (window:resize)="onResize($event)">
+
+  <div class="col-lg-6 col-sm-12 col-md-12">
+
+
+
+    <div class="bodP">
+      <h1>
+        MY WORKS</h1>
+    </div>
+
+
+
+    <!--         <img src="assets/images/projects.jpg" [style.position]="image1position" class="img-fluid image1" alt="" style="height: 100vh;
+              left: 0; top: 0px;   filter: grayscale(0%);   "> -->
+
+  </div>
+
+  <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 0px; height: 100vh; position: relative; ">
+    <div class="container"
+      style="top: 0px; padding: 120px 20px 40px 20px ; position: absolute;  height: auto; background-color:rgba(0,0,0,.5); min-height: 100vh; ">
+      <!--------------------------------------------------------------------------------------------------------------------------->
+      <h4 style=" color: white; padding-bottom: 20px;  margin: auto;  padding-left:20px ;">Desktop Applications</h4>
+
+
+      <div fxLayout="row wrap" fxLayoutGap="20px grid" style=" align-content: center; " [@listAnimation]="10">
+        <div fxFlex="48%"  fxFlex.md="45%" fxFlex.sm="90%" fxFlex.xs="90%"  *ngFor="let p of projects; let i = index">
+          <!-- -------------------------------------------------------- -->
+
+      
+         
+            <div class="card">
+
+
+              <img [src]="p.imageLink" alt="" >
+
+
+              
+              <div class="descriptions">
+                <h5>{{p.Name}}</h5>
+                 <p>
+                  {{p.description}}
+                </p>
+                <button>
+                  <i class="fab fa-youtube"></i>
+                  More
+                </button>
+              </div>
+            </div>
+
+
     
-    <div class="col-lg-6 col-sm-12 col-md-12" >
+          <!-- -------------------------------------------------------- -->          
+     
+
+      </div>
 
 
 
-    </div>    
+      </div>
 
 
-    <div class="col-lg-6 col-sm-12 col-md-12 skills" style="top: 0px; height: 100vh; position: relative; ">
-      <div class="container" style="top: 0px; padding-top: 120px; padding-bottom: 40px; position: absolute;  height: auto; background-color:rgba(0,0,0,.5);">
-        <div class="container" >  
-            <div fxLayout="row wrap" fxLayoutGap="20px grid" >
-        <div fxFlex="40%" fxFlex.xs="90%" fxFlex.sm="90%" *ngFor="let skill of skills; let i = index">
-               
-<!--Card-->
-<mdb-card dark="true">
 
-    <!--Card image-->
-    <div class="view overlay waves-light" mdbWavesEffect>
-        <mdb-carousel [isControls]="false" [animation]="'slide'" >
-            <mdb-carousel-item>
-              <img class="d-block w-100" style="height: 220px;" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
-            </mdb-carousel-item>
-            <mdb-carousel-item>
-              <img class="d-block w-100" style="height: 220px;" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
-            </mdb-carousel-item>
-            <mdb-carousel-item>
-              <img class="d-block w-100" style="height: 220px;" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
-            </mdb-carousel-item>
-          </mdb-carousel>
-      <a>
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-    <!--/.Card image-->
 
-    <!--Card content-->
-    <mdb-card-body class="elegant-color white-text">
-      <a class="activator px-3 mr-2">
-        <mdb-icon fas icon="share-alt" class="white-text"></mdb-icon>
-      </a>
 
-      <!--Title-->
-      <mdb-card-title>
-        <h4>{{skill.technologieName}}</h4>
-      </mdb-card-title>
 
-      <hr class="hr-light">
 
-      <!--Text-->
 
-      <mdb-card-text class="white-text">
-        Some quick example text to build on the card title and make up the bulk of the card's content.
-      </mdb-card-text>
 
-      <a href="#!" class="white-text d-flex justify-content-end">
-        <h5 class="waves-light white-text" mdbWavesEffect>Read more
-          <span>
-            <mdb-icon fas icon="chevron-right" class="pl-2 waves-light" mdbWavesEffect></mdb-icon>
-          </span>
-        </h5>
-      </a>
-    </mdb-card-body>
-    <!--/.Card content-->
-  </mdb-card>
-  <!--/.Card-->
-</div>  
-        </div>
-    </div>
+
+
+
 
     </div>
+    <!--------------------------------------------------------------------------------------------------------------------------->
+
+
+  </div>
+  <!--------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
 
 
 </div>

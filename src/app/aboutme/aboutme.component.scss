@@ -99,7 +99,7 @@ $currentPercentage: 0;
 
 	background-position: center center;
 	background-size: cover, 100% 3px;
-	font-size: calc(17px + 2vw);
+	font-size: calc(16px + 2vw);
 	font-family: 'VT323', monospace, sans-serif;
 	color: #3f3; // hacker green
 	-webkit-font-smoothing: antialiased;
@@ -124,3 +124,165 @@ $currentPercentage: 0;
 // 	&::before, &::after { display: none !important; }
 // 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1580009/codepen_css-typed-this.png) center / cover;
 // }
+
+
+a{
+	color: #111
+  }
+  
+  .photo{
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	width: 70%;
+	height: 70%;
+	transform: translate(-50%, -50%);
+	display: block;
+  }
+  
+  .photo img{
+	width:100%;
+	height: 100%;
+	object-fit: cover;
+	filter: grayscale(100%) contrast(120%);
+	box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+	display: block;
+	transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+	margin-top: -10px;
+  }
+  
+  .photo:hover img{
+	box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+	filter: grayscale(0%) contrast(120%);
+  }
+  
+  .photo .glow-wrap{
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	margin-top: -10px;
+  }
+  
+  .photo .glow{
+	display: block;
+	position:absolute;
+	width: 40%;
+	height: 200%;
+	background: rgba(255,255,255,.2);
+	top: 0;
+	filter: blur(5px);
+	transform: rotate(45deg) translate(-450%, 0);
+	transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  
+  .photo:hover .glow{
+	transform: rotate(45deg) translate(450%, 0);
+	transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  
+  .photo:hover img,
+  .photo:hover .glow-wrap{
+	margin-top: 0;
+  }
+  
+  h1{
+	position: absolute;
+	z-index: 1;
+	transform: translate(-25%, -65%);
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	line-height: 1.2;
+	color: rgb(143, 134, 134);
+  }
+  
+  
+  /* Ends */
+  
+  #author{
+	font-family: Helvetica, Arial;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-decoration: none;
+	position: fixed;
+	bottom: 25px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #888;
+  }
+  
+  #author:hover{
+	color: #111;
+  }
+
+
+// ************************************************************
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+  .Nom{
+	animation: glitch 1s linear infinite;
+	color: white;
+	font-size: calc(16px + 2vw);
+	font-family: 'Fira Mono', monospace;
+	letter-spacing: -7px;
+
+	z-index: 1;
+
+  
+	margin: 0;
+  }
+  
+  @keyframes glitch{
+	2%,64%{
+	  transform: translate(2px,0) skew(0deg);
+	}
+	4%,60%{
+	  transform: translate(-2px,0) skew(0deg);
+	}
+	62%{
+	  transform: translate(0,0) skew(5deg); 
+	}
+  }
+  
+  .Nom:before,
+  .Nom:after{
+	content: attr(title);
+	position: absolute;
+	left: 0;
+  }
+  
+  .Nom:before{
+	animation: glitchTop 1s linear infinite;
+	clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  
+  @keyframes glitchTop{
+	2%,64%{
+	  transform: translate(2px,-2px);
+	}
+	4%,60%{
+	  transform: translate(-2px,2px);
+	}
+	62%{
+	  transform: translate(13px,-1px) skew(-13deg); 
+	}
+  }
+  
+  .Nom:after{
+	animation: glitchBotom 1.5s linear infinite;
+	clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+	-webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+  
+  @keyframes glitchBotom{
+	2%,64%{
+	  transform: translate(-2px,0);
+	}
+	4%,60%{
+	  transform: translate(-2px,0);
+	}
+	62%{
+	  transform: translate(-22px,5px) skew(21deg); 
+	}
+  }
