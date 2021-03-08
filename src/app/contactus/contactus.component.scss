@@ -42,14 +42,15 @@ $white: whitesmoke;
   place-items: center;
  
   margin: 0;
-  padding: 0;
+  padding: 20px;
   min-height: 100vh;
-
+  display: flex;
   justify-content: center;
   align-items: center;   
   font-family: sans-serif;
 
-  padding: 120px 20px 40px 20px ;   height: auto;
+  padding: 120px 20px 10px 20px ;  
+   height: auto;
 
 position: absolute;
 	width: 100%;
@@ -73,29 +74,18 @@ $monospace: Consolas, "Lucida Console",  monospace;
 }
 
 
-body {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100vh;
-	background: linear-gradient(45deg, $bg1, $bg2);
-}
 
-code {
-	font-family: "Lucida Console", Monaco, monospace;
-	font-size: 14px;
-}
 
 .card {
 	position: relative;
-	width: 30rem;
-	height: 15rem;
+	width: 100%;
+	height: 25%;
+	min-height: 150px;
+	padding: 5px;
 	perspective: 150rem;
   background-color: transparent;
   border: none;
-  padding-bottom: 10px;
+
   
 	&-front,
 	&-back {
@@ -159,8 +149,8 @@ code {
 		transform: rotateX(0deg);
 		z-index: 2 !important;
 	}
-	.line-numbers {
-		@extend code;
+	.mmb {
+
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -168,7 +158,7 @@ code {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		//width: 20px;
+		width: 70%;
 		height: 100%;
 		margin: 0;
 		padding: 0 10px;
@@ -208,4 +198,118 @@ code {
 		color: $cyan;
 	}
 }
+//*********************************
 
+  /* Badge */
+  .badge {
+	position: relative;
+	
+	  width: 128px;
+	  height: 128px;
+	  border-radius: 20%;
+  
+	  top: 0;
+	  transition: all 0.2s ease;
+	box-shadow: 8px 10px 12px 3px rgba(0, 0, 0, 0.43);
+  }
+  
+  .rounded {
+	width: 70%;
+	  height: 70%;
+	background: white;
+	position: relative;
+	margin:15%;
+	z-index: 10;
+	
+	box-shadow: 8px 8px 8px 2px rgba(0, 0, 0, 0.23);
+	
+	i.fab {
+	  font-size: 7em;
+		  margin:3%;
+	}
+  }
+  
+  /* Colors */
+  .blue {
+	  background: dodgerblue;
+	  color: rgb(4, 121, 160);
+  }
+  
+  .bluepascal{
+	background: rgb(43, 43, 248);
+  }
+  
+  .bluec{
+	background: darkslateblue;
+  
+  }
+  
+  .orange {
+	background: darkorange;
+	color: orange;
+  }
+  
+  .gold {
+	background: gold;
+	color: rgb(209, 179, 7);
+  }
+  
+  .red {
+	background: red;
+	color: red;
+  }
+  
+  .redrad {
+	background: rgb(204, 4, 4);
+	color: red;
+  }
+  
+  .purple {
+	background: rgb(80, 47, 151);
+	color: rgb(105, 70, 177);
+	background-color: rgb(105, 70, 177);;
+  }
+  
+  .green {
+	background: yellowgreen;
+	color: darkslategray;
+  }
+  
+  .crimson {
+	background: crimson;
+	color: firebrick;
+  }
+  
+  .steel {
+	background: steelblue;
+	color: gold;
+  }
+  
+  .pink {
+	background: hotpink;
+	color: palevioletred;
+  }
+  
+  .rebecca {
+	background: rebeccapurple;
+	color: rebeccapurple;
+  }
+  
+  .gainsboro {
+	background: gainsboro;
+	color: orangered;
+  }
+  .gray{
+	background: rgb(41, 42, 51);
+	color: rgb(41, 42, 51);
+  }
+  
+  .grayblue{
+	background: rgb(22, 51, 90);
+	color: rgb(41, 42, 51);
+  }
+ 
+
+
+  //*************************************
+ 
