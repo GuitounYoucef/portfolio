@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
@@ -18,13 +16,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
-
 
 const routes: Routes = [
   { path: 'aboutme', component: AboutmeComponent, data: {animation: 'aboutmePage'}},
@@ -32,9 +26,7 @@ const routes: Routes = [
   { path: 'education', component: EducationComponent, data: {animation: 'educationPage'}},
   { path: 'projects', component: ProjectsComponent, data: {animation: 'projectsPage'}},
   { path: 'contactme', component: ContactusComponent, data: {animation: 'contactmePage'}},
-  { path: '**', component: AboutmeComponent},
-  
-  
+  { path: '**', component: AboutmeComponent}, 
 ];
 
 @NgModule({
