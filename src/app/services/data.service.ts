@@ -273,7 +273,7 @@ Projects = [
     link:'https://github.com/GuitounYoucef/AngularSrpingBootBlog',
     
   },
-  {
+/*   {
     id:6,
     type:'web',
     Name: 'This portfolio',
@@ -284,7 +284,7 @@ Projects = [
     imageLink: ['assets/images/projects/portfolio/portfolio.JPG', ],
     description: 'front-end mini web application with angular',
     link:'https://github.com/GuitounYoucef/portfolio/tree/master',
-  },
+  }, */
 ]
 
 
