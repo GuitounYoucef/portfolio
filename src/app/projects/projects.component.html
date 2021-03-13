@@ -28,18 +28,18 @@ left: 0; top: 0px; display: flex;    " muted loop autoplay></video>
       <h4 style=" color: white; padding-bottom: 20px;  margin: auto;  padding-left:20px ;">Desktop Applications</h4>
       <div fxLayout="row wrap" fxLayoutGap="20px grid" style=" align-content: center; " [@listAnimation]="10">
         <div fxFlex="48%" fxFlex.md="45%" fxFlex.sm="90%" fxFlex.xs="90%"
-          *ngFor="let p of desktpsprojects; let i = index">
+          *ngFor="let p of Projects; let i = index">
           <!-- -------------------------------------------------------- -->
-          <div class="card">
-            <img [src]="p.imageLink" alt="">
+          <div class="card" *ngIf="p.type=== 'desktop'" >
+            <img [src]="p.imageLink[0]" alt="">
             <div class="descriptions">
               <h5>{{p.Name}} ({{p.period}})</h5>
               <p>
                 {{p.description}}
  
               </p>
-              <h5>technological environment</h5>
-              <button type="button" class="btn btn-dark" *ngFor="let i of p.Technological">{{i}}</button>
+
+              <button type="button" class="btn btn-dark" (click)="openProject(p.id)" >Detail</button>
 
             </div>
           </div>
@@ -50,19 +50,18 @@ left: 0; top: 0px; display: flex;    " muted loop autoplay></video>
             <h4 style=" color: white; padding-bottom: 20px; padding-top: 40px; margin: auto;  padding-left:20px ;">Web Applications</h4>
             <div fxLayout="row wrap" fxLayoutGap="20px grid" style=" align-content: center; " [@listAnimation]="10">
               <div fxFlex="48%" fxFlex.md="45%" fxFlex.sm="90%" fxFlex.xs="90%"
-                *ngFor="let p of webprojects; let i = index">
+                *ngFor="let p of Projects; let i = index">
                 <!-- -------------------------------------------------------- -->
-                <div class="card">
-                  <img [src]="p.imageLink" alt="">
+                <div class="card" *ngIf="p.type=== 'web'">
+                  <img [src]="p.imageLink[0]" alt="">
                   <div class="descriptions">
                     <h5>{{p.Name}} ({{p.period}})</h5>
                     <p>
                       {{p.description}}
                     </p>
-                    <a [href]="p.link" target="_blank" *ngIf="p.link!='none'" >Source Code</a>
+                    <a [href]="p.link" target="_blank" *ngIf="p.link!='none'" >Source Code</a> <br>
 
-                    <h5>technological environment</h5>
-                    <button type="button" class="btn btn-dark" *ngFor="let i of p.Technological">{{i}}</button>
+                    <button type="button" class="btn btn-dark" (click)="openProject(p.id)" >Detail</button>
                   </div>
                 </div>
                 <!-- -------------------------------------------------------- -->

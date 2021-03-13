@@ -1,320 +1,313 @@
-.video{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-}
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-}
 
-// Love dynamically typed text? You're gonna love this
-// Edit these strings to see them typed on the screen:
-$strings: (
-	"Welcome to my Portfolio ☕"
-	"I am a : Computer engeneer"
-     "and Software developer"
-     ", Junior fullstack developer"
-);
-
-// now for some timing (in seconds)
-$durCharFwd: 0.10; // character typed
-$durFullGap: 2.00; // time between typed/delete
-$durCharBwd: 0.08; // character deleted
-$durDoneGap: 1.00; // time between strings
-
-// initializing some variables and functions ✊🏼
-$charCount: 0; $durTotal: 0;
-@each $string in $strings {
-	$charCount: $charCount + str-length($string);
-	$durTotal: $durTotal
-		+ (str-length($string) * ($durCharFwd + $durCharBwd))
-		+ $durFullGap + $durDoneGap;
-}
-@function percent($string, $letter, $modifier) {
-	$stringsPast: $string - 1; $time: 0;
-	@while $stringsPast > 0 {
-		$time: $time
-			+ (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
-			+ $durFullGap + $durDoneGap;
-		$stringsPast: $stringsPast - 1;
-	}
-	@if $letter <= str-length(nth($strings, $string)) {
-		$time: $time
-			+ ($durCharFwd * ($letter - 1));
-	} @else {
-		$time: $time
-			+ ($durCharFwd * str-length(nth($strings, $string)))
-			+ $durFullGap
-			+ ($durCharBwd * ($letter - str-length(nth($strings, $string))));
-	}
-	@return ($time / $durTotal * 100 + $modifier) + "%";
-}
-$currentPercentage: 0;
-// now THIS is where the magic happens... ✨
-@keyframes typed {
-	@for $i from 1 through length($strings) {
-		// @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
-		@for $j from 1 through (str-length(nth($strings, $i)) * 2) {
-			/* string #{$i}, char #{$j} */
-			@if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
-				#{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
-					@if $j <= str-length(nth($strings, $i)) {
-						content: quote(#{str_slice(nth($strings, $i), 1, $j)});
-					} @else {
-						content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
-					}
-				}
-			} @else {
-				@if $i < length($strings) { // not last string
-					#{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
-						content: "​"; // zero-width space to retain element height
-					}
-				} @else { // last string
-					#{percent($i, $j, 0)}, 100% {
-						content: "​"; // zero-width space to retain element height
-					}
-				}
-			}
-		}
-	}
-}
-@keyframes beam-blink {
-	75% { border-color: transparent; }
-}
-* { backface-visibility: hidden; }
-.bod { height: 100%; }
-.bod {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	background-position: center center;
-	background-size: cover, 100% 3px;
-	font-size: calc(16px + 2vw);
-	font-family: 'VT323', monospace, sans-serif;
-	color: rgb(8, 219, 247); // hacker green
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	&::after {
-		content: "​"; // zero-width space to retain element height
-		position: relative;
-		top: -13px;
-		@media (max-width: 575px) { top: -33px; }
-		display: inline-block;
-		padding-right: 3px;
-		padding-right: calc(3px + 0.1vw);
-		border-right: 10px solid rgb(59, 192, 209);;
-		border-right: calc(1.1vw + 4px) solid rgb(62, 214, 235);;
-		text-shadow: 0 0 5px rgb(38, 186, 206);
-		white-space: nowrap;
-		animation: typed #{$durTotal + "s"} linear 1s infinite, beam-blink 1s infinite;
-	}
-
-}
-// body[onload] {
-// 	&::before, &::after { display: none !important; }
-// 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1580009/codepen_css-typed-this.png) center / cover;
-// }
-
-
-a{
-	color: #111
-  }
-  
-  .photo{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 70%;
-	min-height: 400px;
-	min-width: 400px;
-	height: 70%;
-	transform: translate(-50%, -50%);
-	display: block;
-  }
-  
-  .photo img{
-	width:70%;
-	height: 70%;
-	object-fit: cover;
-	filter: grayscale(100%) contrast(120%);
-	box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
-	display: block;
-	transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
-	margin: auto;
-  }
-  
-  .photo:hover img{
-	box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
-	filter: grayscale(0%) contrast(120%);
-  }
-  
-  .photo .glow-wrap{
-	overflow: hidden;
-	position: absolute;
-	width: 80%;
-	height: 80%;
-	top: 10%;
-	left: 15%;
-	margin: auto;
-	border-radius: 50%;
-  }
-  
-  .photo .glow{
-	display: block;
-	position:absolute;
-	width: 70%;
-	height: 70%;
-	background: rgba(255,255,255,.2);
-	top: 0;
-	filter: blur(5px);
-	transform: rotate(45deg) translate(-450%, 0);
-	transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
-  }
-  
-  .photo:hover .glow{
-	transform: rotate(45deg) translate(450%, 0);
-	transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-  }
-  
-  .photo:hover img,
-  .photo:hover .glow-wrap{
-	margin-top: 0;
-  }
-  
-  h1{
-	position: absolute;
-	z-index: 1;
-	transform: translate(-25%, -65%);
-	font-family: 'Montserrat', sans-serif;
-	margin: 0;
-	line-height: 1.2;
-	color: rgb(143, 134, 134);
-  }
-  
-  
-  /* Ends */
-  
-  #author{
-	font-family: Helvetica, Arial;
-	text-transform: uppercase;
-	font-size: 14px;
-	text-decoration: none;
+  #myVideo {
 	position: fixed;
-	bottom: 25px;
-	left: 50%;
-	transform: translateX(-50%);
-	color: #888;
+	right: 0;
+	bottom: 0;
+	min-width: 100%; 
+	min-height: 100%;
   }
   
-  #author:hover{
-	color: #111;
-  }
-
-
-// ************************************************************
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
-  .Nom{
-	animation: glitch 1s linear infinite;
-	color: white;
-	font-size: calc(16px + 2vw);
-	font-family: 'Fira Mono', monospace;
-	letter-spacing: -7px;
-
-	z-index: 1;
-
+  // Love dynamically typed text? You're gonna love this
+  // Edit these strings to see them typed on the screen:
+  $strings: (
+	  "Welcome to my Portfolio ☕"
+	  "I am a Computer engeneer"
+	   "and Software developer"
+	   ", Junior fullstack developer"
+	   "I have programming experience"
+	    "of 16 years"
+  );
   
-	margin: 0;
-  }
+  // now for some timing (in seconds)
+  $durCharFwd: 0.05; // character typed
+  $durFullGap: 1.50; // time between typed/delete
+  $durCharBwd: 0.02; // character deleted
+  $durDoneGap: 1.00; // time between strings
   
-  @keyframes glitch{
-	2%,64%{
-	  transform: translate(2px,0) skew(0deg);
+  // initializing some variables and functions ✊🏼
+  $charCount: 0; $durTotal: 0;
+  @each $string in $strings {
+	  $charCount: $charCount + str-length($string);
+	  $durTotal: $durTotal
+		  + (str-length($string) * ($durCharFwd + $durCharBwd))
+		  + $durFullGap + $durDoneGap;
+  }
+  @function percent($string, $letter, $modifier) {
+	  $stringsPast: $string - 1; $time: 0;
+	  @while $stringsPast > 0 {
+		  $time: $time
+			  + (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
+			  + $durFullGap + $durDoneGap;
+		  $stringsPast: $stringsPast - 1;
+	  }
+	  @if $letter <= str-length(nth($strings, $string)) {
+		  $time: $time
+			  + ($durCharFwd * ($letter - 1));
+	  } @else {
+		  $time: $time
+			  + ($durCharFwd * str-length(nth($strings, $string)))
+			  + $durFullGap
+			  + ($durCharBwd * ($letter - str-length(nth($strings, $string))));
+	  }
+	  @return ($time / $durTotal * 100 + $modifier) + "%";
+  }
+  $currentPercentage: 0;
+  // now THIS is where the magic happens... ✨
+  @keyframes typed {
+	  @for $i from 1 through length($strings) {
+		  // @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
+		  @for $j from 1 through (str-length(nth($strings, $i)) * 2) {
+			  /* string #{$i}, char #{$j} */
+			  @if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
+				  #{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
+					  @if $j <= str-length(nth($strings, $i)) {
+						  content: quote(#{str_slice(nth($strings, $i), 1, $j)});
+					  } @else {
+						  content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
+					  }
+				  }
+			  } @else {
+				  @if $i < length($strings) { // not last string
+					  #{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
+						  content: "​"; // zero-width space to retain element height
+					  }
+				  } @else { // last string
+					  #{percent($i, $j, 0)}, 100% {
+						  content: "​"; // zero-width space to retain element height
+					  }
+				  }
+			  }
+		  }
+	  }
+  }
+  @keyframes beam-blink {
+	  75% { border-color: transparent; }
+  }
+  * { backface-visibility: hidden; }
+  .bod { height: 100%; }
+  .bod {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  
+	  background-position: center center;
+	  background-size: cover, 100% 3px;
+	  font-size: calc(16px + 2vw);
+	  font-family: 'VT323', monospace, sans-serif;
+	  color: rgb(8, 219, 247); // hacker green
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  &::after {
+		  content: "​"; // zero-width space to retain element height
+		  position: relative;
+		  top: -13px;
+		  @media (max-width: 575px) { top: -33px; }
+		  display: inline-block;
+		  padding-right: 3px;
+		  padding-right: calc(3px + 0.1vw);
+		  border-right: 10px solid rgb(59, 192, 209);;
+		  border-right: calc(1.1vw + 4px) solid rgb(62, 214, 235);;
+		  text-shadow: 0 0 5px rgb(38, 186, 206);
+		  white-space: nowrap;
+		  animation: typed #{$durTotal + "s"} linear 1s infinite, beam-blink 1s infinite;
+	  }
+  
+  }
+  // body[onload] {
+  // 	&::before, &::after { display: none !important; }
+  // 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1580009/codepen_css-typed-this.png) center / cover;
+  // }
+  
+  
+  a{
+	  color: #111
 	}
-	4%,60%{
-	  transform: translate(-2px,0) skew(0deg);
+	
+	.photo{
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  width: 70%;
+	  min-height: 400px;
+	  min-width: 400px;
+	  height: 70%;
+	  transform: translate(-50%, -50%);
+	  display: block;
 	}
-	62%{
-	  transform: translate(0,0) skew(5deg); 
+	
+	.photo img{
+	  width:70%;
+	  height: 70%;
+	  object-fit: cover;
+	  filter: grayscale(100%) contrast(120%);
+	  box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+	  display: block;
+	  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+	  margin: auto;
 	}
-  }
+	
+	.photo:hover img{
+	  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+	  filter: grayscale(0%) contrast(120%);
+	}
+	
+	.photo .glow-wrap{
+	  overflow: hidden;
+	  position: absolute;
+	  width: 80%;
+	  height: 80%;
+	  top: 10%;
+	  left: 15%;
+	  margin: auto;
+	  border-radius: 50%;
+	}
+	
+	.photo .glow{
+	  display: block;
+	  position:absolute;
+	  width: 70%;
+	  height: 70%;
+	  background: rgba(255,255,255,.2);
+	  top: 0;
+	  filter: blur(5px);
+	  transform: rotate(45deg) translate(-450%, 0);
+	  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+	}
+	
+	.photo:hover .glow{
+	  transform: rotate(45deg) translate(450%, 0);
+	  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+	}
+	
+	.photo:hover img,
+	.photo:hover .glow-wrap{
+	  margin-top: 0;
+	}
+	
+	h1{
+	  position: absolute;
+	  z-index: 1;
+	  transform: translate(-25%, -65%);
+	  font-family: 'Montserrat', sans-serif;
+	  margin: 0;
+	  line-height: 1.2;
+	  color: rgb(143, 134, 134);
+	}
+	
+	
+	/* Ends */
+	
+	#author{
+	  font-family: Helvetica, Arial;
+	  text-transform: uppercase;
+	  font-size: 14px;
+	  text-decoration: none;
+	  position: fixed;
+	  bottom: 25px;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  color: #888;
+	}
+	
+	#author:hover{
+	  color: #111;
+	}
   
-  .Nom:before,
-  .Nom:after{
-	content: attr(title);
+  
+  // ************************************************************
+  @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+	.Nom{
+	  animation: glitch 1s linear infinite;
+	  color: white;
+	  font-size: calc(16px + 2vw);
+	  font-family: 'Fira Mono', monospace;
+	  letter-spacing: -7px;
+  
+	  z-index: 1;
+  
+	
+	  margin: 0;
+	}
+	
+	@keyframes glitch{
+	  2%,64%{
+		transform: translate(2px,0) skew(0deg);
+	  }
+	  4%,60%{
+		transform: translate(-2px,0) skew(0deg);
+	  }
+	  62%{
+		transform: translate(0,0) skew(5deg); 
+	  }
+	}
+	
+	.Nom:before,
+	.Nom:after{
+	  content: attr(title);
+	  position: absolute;
+	  left: 0;
+	}
+	
+	.Nom:before{
+	  animation: glitchTop 1s linear infinite;
+	  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+	  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+	}
+	
+	@keyframes glitchTop{
+	  2%,64%{
+		transform: translate(2px,-2px);
+	  }
+	  4%,60%{
+		transform: translate(-2px,2px);
+	  }
+	  62%{
+		transform: translate(13px,-1px) skew(-13deg); 
+	  }
+	}
+	
+	.Nom:after{
+	  animation: glitchBotom 1.5s linear infinite;
+	  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+	  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+	}
+	
+	@keyframes glitchBotom{
+	  2%,64%{
+		transform: translate(-2px,0);
+	  }
+	  4%,60%{
+		transform: translate(-2px,0);
+	  }
+	  62%{
+		transform: translate(-22px,5px) skew(21deg); 
+	  }
+	}
+  
+  
+	
+  
+  .bodd {
+	  height: 100vh;
+	
+	
+	  place-items: center;
+	 
+	  margin: 0;
+	  padding: 20px;
+	  min-height: 100vh;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;   
+	  font-family: sans-serif;
+	
+	  padding: 120px 20px 10px 20px ;  
+	   height: auto;
+	
 	position: absolute;
-	left: 0;
-  }
-  
-  .Nom:before{
-	animation: glitchTop 1s linear infinite;
-	clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-	-webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  }
-  
-  @keyframes glitchTop{
-	2%,64%{
-	  transform: translate(2px,-2px);
-	}
-	4%,60%{
-	  transform: translate(-2px,2px);
-	}
-	62%{
-	  transform: translate(13px,-1px) skew(-13deg); 
-	}
-  }
-  
-  .Nom:after{
-	animation: glitchBotom 1.5s linear infinite;
-	clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-	-webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  }
-  
-  @keyframes glitchBotom{
-	2%,64%{
-	  transform: translate(-2px,0);
-	}
-	4%,60%{
-	  transform: translate(-2px,0);
-	}
-	62%{
-	  transform: translate(-22px,5px) skew(21deg); 
-	}
-  }
-
-
-  
-
-.bodd {
-	height: 100vh;
-  
-  
-	place-items: center;
-   
-	margin: 0;
-	padding: 20px;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;   
-	font-family: sans-serif;
-  
-	padding: 120px 20px 10px 20px ;  
-	 height: auto;
-  
-  position: absolute;
-	  width: 100%;
-	  height: auto;
-	  background:rgba(black, 0.6)
-  
-	  
-  }  
-  
+		width: 100%;
+		height: auto;
+		background:rgba(black, 0.6)
+	
+		
+	}  

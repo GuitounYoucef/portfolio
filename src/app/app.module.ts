@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 const routes: Routes = [
   { path: 'aboutme', component: AboutmeComponent, data: {animation: 'aboutmePage'}},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'education', component: EducationComponent, data: {animation: 'educationPage'}},
   { path: 'projects', component: ProjectsComponent, data: {animation: 'projectsPage'}},
   { path: 'contactme', component: ContactusComponent, data: {animation: 'contactmePage'}},
+  { path: 'ProjectDetail/:id', component: ProjectDetailComponent , data: {animation: 'ProjectDetailPage'}},
   { path: '**', component: AboutmeComponent}, 
 ];
 
@@ -39,6 +41,7 @@ const routes: Routes = [
     FooterComponent,
     ContactusComponent,
     ProjectsComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserAnimationsModule,
